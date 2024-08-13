@@ -8,8 +8,11 @@ class RegisterScreenViewModel extends BaseViewModel {
   final TextEditingController password = TextEditingController();
   final TextEditingController confirmPassword = TextEditingController();
   final AuthService _authService = AuthService();
+  bool isLoading = false;
 
   Future<void> signUp() async {
+    isLoading = true;
+    notifyListeners();
     if (email.text.isEmpty || password.text.isEmpty || confirmPassword.text.isEmpty) {
       snackbarService.error(message: 'Please fill in all fields');
       return;
@@ -23,6 +26,8 @@ class RegisterScreenViewModel extends BaseViewModel {
       return;
     }
     await _authService.signUpWithEmailPassword(email.text, password.text);
+    isLoading = false;
+    notifyListeners();
   }
 
   bool _isPasswordMatching() {

@@ -4,15 +4,20 @@ import 'package:nzinga/services/auth_service.dart';
 import 'package:stacked/stacked.dart';
 
 class LoginViewmodel extends BaseViewModel{
+  bool isLoading = false;
   final TextEditingController email = TextEditingController();
   final TextEditingController password = TextEditingController();
   final AuthService _authService = AuthService();
 
-  Future<void>signin() async {
+  Future<void> signin() async {
+    isLoading = true;
+    notifyListeners();
      if (email.text.isEmpty || password.text.isEmpty) {
       snackbarService.error(message: 'Please fill in all fields');
       return;
     }
     await _authService.signInWithEmailPassword(email.text, password.text);
+    isLoading = false;
+    notifyListeners();
   }
 }

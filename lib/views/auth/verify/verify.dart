@@ -10,18 +10,20 @@ class VerifyScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('Verify Your Email'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const AppText(
-              text: 'A verification email has been sent to your email address. Please verify your email to continue.',
-              textAlign: TextAlign.center,
-            ),
-            SizedBox(height: 24.0),
-          
-          ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const AppText(
+                text: 'A verification email has been sent to your email address. Please verify your email to continue.',
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: 24.0),
+
+            ],
+          ),
         ),
       ),
     );

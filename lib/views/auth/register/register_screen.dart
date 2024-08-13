@@ -24,42 +24,44 @@ class RegisterScreen extends StatelessWidget {
               fontSize: AppFontSize.s24.sp,
             ),
           ),
-          body: Center(
-            child: Padding(
-              padding: EdgeInsets.all(20.sp),
-              child: Column(
-                children: <Widget>[
-                  SizedBox(height: 50.sp),
-                  AppTextField(
-                    controller: model.email,
-                    labelText: 'Email',
-                  ),
-                  SizedBox(height: 10.sp),
-                  AppTextField(
-                    labelText: 'Password',
-                    controller: model.password,
-                    obscureText: true,
-                  ),
-                  SizedBox(height: 10.sp),
-                  AppTextField(
-                    labelText: 'Confirm Password',
-                    obscureText: true,
-                    controller: model.confirmPassword,
-                  ),
-                  SizedBox(height: 20.sp),
-                  AuthTextButtons(
-                    registerText: "Register",
-                    backToLoginText: "< Back to Login",
-                    onRegisterPressed: (){
-                      model.signUp();
-                    },
-                    onBackToLoginPressed: () {
-                      navigationService.pushReplacement(const LoginScreen());
-                    },
-                  ),
-                  // SizedBox(height: 20.sp),
-                  // SignInWithOptions(),
-                ],
+          body: SingleChildScrollView(
+            child: Center(
+              child: Padding(
+                padding: EdgeInsets.all(20.sp),
+                child: Column(
+                  children: <Widget>[
+                    SizedBox(height: 50.sp),
+                    AppTextField(
+                      controller: model.email,
+                      labelText: 'Email',
+                    ),
+                    SizedBox(height: 10.sp),
+                    AppTextField(
+                      labelText: 'Password',
+                      controller: model.password,
+                      obscureText: true,
+                    ),
+                    SizedBox(height: 10.sp),
+                    AppTextField(
+                      labelText: 'Confirm Password',
+                      obscureText: true,
+                      controller: model.confirmPassword,
+                    ),
+                    SizedBox(height: 20.sp),
+                    AuthTextButtons(
+                      registerText: "Register",
+                      backToLoginText: "< Back to Login",
+                      onRegisterPressed: (){
+                        model.signUp();
+                      },
+                      onBackToLoginPressed: () {
+                        navigationService.pushReplacement(const LoginScreen());
+                      },
+                    ),
+                    // SizedBox(height: 20.sp),
+                    // SignInWithOptions(),
+                  ],
+                ),
               ),
             ),
           ),

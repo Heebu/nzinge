@@ -22,30 +22,36 @@ class LoginScreen extends StatelessWidget {
               fontSize: AppFontSize.s24.sp,
             ),
           ),
-          body: Center(
-            child: Padding(
-              padding: EdgeInsets.all(20.sp),
-              child: Column(
-                children: <Widget>[
-                  SizedBox(height: 50.sp),
-                  AppTextField(
-                    controller: model.email,
-                    labelText: 'Email',
-                  ),
-                  SizedBox(height: 10.sp),
-                  AppTextField(
-                    labelText: 'Password',
-                    controller: model.password,
-                    obscureText: true,
-                  ),
-                  SizedBox(height: 20.sp),
-                  AuthTextButtons(
-                    backToLoginText: "Login",
-                    onBackToLoginPressed: model.signin,
-                  ),
-                  SizedBox(height: 20.sp),
-                  // SignInWithOptions(),
-                ],
+          body: SingleChildScrollView(
+            child: Center(
+              child: Padding(
+                padding: EdgeInsets.all(20.sp),
+                child: Column(
+                  children: <Widget>[
+                    SizedBox(height: 50.sp),
+                    AppTextField(
+                      controller: model.email,
+                      labelText: 'Email',
+                    ),
+                    SizedBox(height: 10.sp),
+                    AppTextField(
+                      labelText: 'Password',
+                      controller: model.password,
+                      obscureText: true,
+                    ),
+                    SizedBox(height: 20.sp),
+                    model.isLoading == true?
+                    Align(
+                        alignment: Alignment.centerRight,
+                        child: SizedBox(height: 20.sp, child: CircularProgressIndicator())):
+                    AuthTextButtons(
+                      backToLoginText: "Login",
+                      onBackToLoginPressed: model.signin,
+                    ),
+                    SizedBox(height: 20.sp),
+                    // SignInWithOptions(),
+                  ],
+                ),
               ),
             ),
           ),

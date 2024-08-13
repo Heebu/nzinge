@@ -17,8 +17,13 @@ void main() async {
   bool isAuthenticated = await AuthService().checkAuthenticationStatus();
   Widget initialRoute = isAuthenticated ? const HomeScreen() : const MyApp();
 
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: initialRoute,
-  ));
+  runApp(
+      GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+        child: MaterialApp(
+            debugShowCheckedModeBanner: false,
+            home: initialRoute,
+          ),
+      ));
 }
